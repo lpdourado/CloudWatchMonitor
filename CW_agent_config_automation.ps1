@@ -14,7 +14,7 @@ $volumeID = aws ec2 describe-volumes --filters Name=attachment.instance-id,Value
 $volumeLabel = aws ec2 describe-volumes --filters Name=attachment.instance-id,Values=$instanceID Name=attachment.device,Values=xvdg --query 'Volumes[*].Tags[?Key==`Name`].Value' --output text
 $region = Get-EC2InstanceMetadata -Category Region | Select-Object -ExpandProperty SystemName
 $CWNamespace = "RDSCustom-"+$volumeLabel.replace('do-not-delete-rds-custom-','').replace('-storage','')
-$dashboard = "do-not-delete-rds-custom-rds-mssql-core_Dashboard"
+$dashboard = "RDSCustom_Dashboard"
 
 write-host ""
 write-host "============================================================================================="
